@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.tour_app.databinding.FragmentDashboardBinding
+import com.example.tour_app.databinding.FragmentPackagesBinding
 
-class paquetesFragment : Fragment() {
+class PaquetesFragment : Fragment() {
 
-private var _binding: FragmentDashboardBinding? = null
+private var _binding: FragmentPackagesBinding? = null
   // This property is only valid between onCreateView and
   // onDestroyView.
   private val binding get() = _binding!!
@@ -22,9 +22,9 @@ private var _binding: FragmentDashboardBinding? = null
     savedInstanceState: Bundle?
   ): View {
     val paquetesViewModel =
-            ViewModelProvider(this).get(paquetesViewModel::class.java)
+            ViewModelProvider(this).get(PaquetesViewModel::class.java)
 
-    _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+    _binding = FragmentPackagesBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
     val textView: TextView = binding.textView3
