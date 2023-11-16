@@ -7,7 +7,6 @@ import com.example.tour_app.data.user.Purchase
 import com.example.tour_app.databinding.PurchaseListItemBinding
 import com.squareup.picasso.Picasso
 
-
 class PurchasesAdapter(
     private val myPurchases: List<PurchaseItemModel>
 ) :
