@@ -1,13 +1,12 @@
 package  com.example.tour_app
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tour_app.data.excepciones.ErrorIniciarSesionException
 import com.example.tour_app.data.user.User
 import com.example.tour_app.databinding.ActivityLoginScreenBinding
-import com.example.tour_app.databinding.ActivityMainBinding
 import repositories.UserRepository
 
 
@@ -22,36 +21,50 @@ class LoginScreen : AppCompatActivity() {
 
         binding.ingresar.setOnClickListener {
             val contrasenia = binding.contraseA.text.toString()
-            val email = binding.email.text.toString()
+            val nickname = binding.nickname.text.toString()
             var user: User? = null
-            var error = 0;
 
-            user = UserRepository.login(email, contrasenia)
+            var error = 0
+
+            user = UserRepository.login(nickname, contrasenia)
 
 
-            do {
+
                 try {
-                    if (user != null) {
-                        Toast.makeText(this,"\n\u001B[51m¡Bienvenido, ${email}!\u001B[0m",Toast.LENGTH_SHORT)
-
-                    } else {
-                        Toast.makeText(this,"\u001B[31mUsuario o contraseña incorrectos.\n\u001B[0m",Toast.LENGTH_SHORT)
-                        error++;
+                    if(user!=null){
+                        Toast.makeText(this,"¡Bienvenido, ${nickname}",Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
                     }
-                    if (error == 3) {
-                        throw ErrorIniciarSesionException("El usuario ingresó 3 veces mal el nombre de usuario.")
+                    else {
+                        Toast.makeText(this,"Usuario o contraseña incorrectos.",Toast.LENGTH_SHORT).show()
+
+                        if(error < 3){
+                            error++
+                            if(error == 3){
+                                throw ErrorIniciarSesionException("")
+
+                            }
+                        }
+
                     }
-                } catch (_: ErrorIniciarSesionException) {
-                    // acá enviaría datos a una bdd
 
-
-
-                    throw ErrorIniciarSesionException("El usuario ingresó 3 veces mal el nombre de usuario.")
+                }catch (  _: ErrorIniciarSesionException  ){
+                    Toast.makeText(this,"El usuario ingresó 3 veces mal el nombre de usuario",Toast.LENGTH_SHORT).show()
 
                 }
 
-            } while (user == null)
 
+
+
+
+        }
+    }
+}
+
+
+
+            /*
 
 
 
