@@ -7,34 +7,50 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tour_app.databinding.FragmentHomeBinding
+import com.example.tour_app.databinding.FragmentPackagesBinding
+import com.example.tour_app.ui.misCompras.adapter.PackageItemModel
+import com.example.tour_app.ui.misCompras.adapter.PackagesAdapter
+import repositories.PackageRepository
 
 class HomeFragment : Fragment() {
 
-private var _binding: FragmentHomeBinding? = null
-  // This property is only valid between onCreateView and
-  // onDestroyView.
-  private val binding get() = _binding!!
+    private var _binding: FragmentHomeBinding? = null
+    private val paquetes = mutableListOf<PackageItemModel>()
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
-    _binding = FragmentHomeBinding.inflate(inflater, container, false)
-    val root: View = binding.root
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
-    val textView: TextView = binding.textView
-    homeViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        PackageRepository.get().forEach { packages ->
+            val tempPackage = PackageRepository.getById(packages.id)
+            tempPackage?.let { tourpackage ->
+                val packageItem = PackageItemModel(
+                    tourpackage.name,
+                    tourpackage.duration,
+                    packages.price,
+                    tourpackage.logo
+                )
+                paquetes.add(packageItem)
+            }
+        }
+        return binding.root
     }
-    return root
-  }
 
-override fun onDestroyView() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.rvPackages.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvPackages.adapter = PackagesAdapter(paquetes)
+    }
+
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tour app</string>
     <string name="title_home">Inicio</string>
-    <string name="title_packages">Paquetes</string>
+    <string name="title_perfil">Mi Perfil</string>
     <string name="title_myCart">Mis compras</string>
     <string name="image_of_the_tour_content_desc">image of the tour</string>
 </resources>

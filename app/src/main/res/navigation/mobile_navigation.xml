@@ -13,8 +13,8 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.tour_app.ui.paquetes.PaquetesFragment"
-        android:label="@string/title_packages"
+        android:name="com.example.tour_app.ui.paquetes.PerfilFragment"
+        android:label="@string/title_perfil"
         tools:layout="@layout/fragment_packages" />
 
     <fragment
