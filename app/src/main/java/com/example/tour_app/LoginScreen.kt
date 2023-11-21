@@ -8,17 +8,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.tour_app.data.excepciones.ErrorIniciarSesionException
 import com.example.tour_app.databinding.ActivityLoginScreenBinding
+import com.example.tour_app.ui.paquetes.PerfilFragment
 import repositories.UserRepository
 
 
 class LoginScreen : AppCompatActivity() {
     private lateinit var binding: ActivityLoginScreenBinding
-    private lateinit var userViewModel: UserViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginScreenBinding.inflate(layoutInflater)
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+
         setContentView(binding.root)
 
 
@@ -30,13 +31,21 @@ class LoginScreen : AppCompatActivity() {
             var error = 0
 
             user = UserRepository.login(nickname, contrasenia)
-            userViewModel.user = user
+            
 
 
                 try {
                     if(user!=null){
                         Toast.makeText(this,"¡Bienvenido, ${nickname}",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("name", user.name)
+                        val intent2 = Intent(this, PerfilFragment::class.java)
+                        intent2.putExtra("nickName", user.nickName)
+                        intent2.putExtra("id", user.id)
+                        intent2.putExtra("name", user.name)
+                        intent2.putExtra("createdDate", user.createdDate)
+                        intent2.putExtra("money", user.money)
+                        intent2.putExtra("surname", user.surname)
                         startActivity(intent)
                         finish()
                     }
