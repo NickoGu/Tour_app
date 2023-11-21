@@ -1,21 +1,24 @@
 package  com.example.tour_app
 
+import User
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.tour_app.data.excepciones.ErrorIniciarSesionException
-import com.example.tour_app.data.user.User
 import com.example.tour_app.databinding.ActivityLoginScreenBinding
 import repositories.UserRepository
 
 
 class LoginScreen : AppCompatActivity() {
     private lateinit var binding: ActivityLoginScreenBinding
+    private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginScreenBinding.inflate(layoutInflater)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         setContentView(binding.root)
 
 
@@ -27,7 +30,7 @@ class LoginScreen : AppCompatActivity() {
             var error = 0
 
             user = UserRepository.login(nickname, contrasenia)
-
+            userViewModel.user = user
 
 
                 try {
