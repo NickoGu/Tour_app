@@ -38,14 +38,7 @@ class LoginScreen : AppCompatActivity() {
                     if(user!=null){
                         Toast.makeText(this,"¡Bienvenido, ${nickname}",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
-                        intent.putExtra("name", user.name)
-                        val intent2 = Intent(this, PerfilFragment::class.java)
-                        intent2.putExtra("nickName", user.nickName)
-                        intent2.putExtra("id", user.id)
-                        intent2.putExtra("name", user.name)
-                        intent2.putExtra("createdDate", user.createdDate)
-                        intent2.putExtra("money", user.money)
-                        intent2.putExtra("surname", user.surname)
+                        intent.putExtra("id", user.id)
                         startActivity(intent)
                         finish()
                     }
