@@ -1,6 +1,6 @@
 package repositories
 
-import com.example.tour_app.data.user.User
+import User
 
 object UserRepository {
 
