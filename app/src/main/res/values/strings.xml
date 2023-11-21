@@ -4,4 +4,9 @@
     <string name="title_perfil">Mi Perfil</string>
     <string name="title_myCart">Mis compras</string>
     <string name="image_of_the_tour_content_desc">image of the tour</string>
+    <string name="Nickname">Nickname</string>
+    <string name="Contrasenia">Password</string>
+    <string name="Ingresar_a_la_app">Ingresar</string>
+    <string name="Registrar_usuario">Registrarse</string>
+    <string name="Icono_app">Icono de la app</string>
 </resources>

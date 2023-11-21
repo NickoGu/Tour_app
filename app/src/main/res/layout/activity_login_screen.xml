@@ -12,11 +12,13 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="226dp"
-        android:layout_height="186dp"
+        android:layout_width="214dp"
+        android:layout_height="175dp"
         android:layout_marginTop="24dp"
+        android:contentDescription="@string/Icono_app"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_logo_svg" />
@@ -36,10 +38,10 @@
         <EditText
             android:id="@+id/nickname"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="28dp"
             android:ems="10"
-            android:hint="Nickname"
+            android:hint="@string/Nickname"
             android:inputType="text"
             android:textColorHint="@color/white" />
 
@@ -48,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="@string/Contrasenia"
             android:inputType="textPassword"
             android:textColorHint="@color/white" />
 
@@ -69,10 +71,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bt_login"
-            android:text="Ingresar"
+            android:text="@string/Ingresar_a_la_app"
             android:textColor="#FFFFFF"
-            app:backgroundTint="@null"
 
+            app:backgroundTint="@null"
             app:strokeColor="#FFFFFF" />
 
         <Space
@@ -85,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bt_login"
-            android:text="Registrar"
+            android:text="@string/Registrar_usuario"
             android:textColor="#FFFFFF"
             app:backgroundTint="@null"
             app:strokeColor="#FFFFFF" />
