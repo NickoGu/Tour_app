@@ -35,6 +35,7 @@ class LoginScreen : AppCompatActivity() {
                         Toast.makeText(this,"¡Bienvenido, ${nickname}",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                     else {
                         Toast.makeText(this,"Usuario o contraseña incorrectos.",Toast.LENGTH_SHORT).show()
