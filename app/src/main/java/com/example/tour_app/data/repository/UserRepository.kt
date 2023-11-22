@@ -18,6 +18,18 @@ object UserRepository {
         return users.find { user -> user.nickName == username && user.password == password }
     }
 
+    fun findUserByNickname(userNickName:String) : User? {
+
+        return users.find { user -> user.nickName == userNickName}
+
+    }
+
+    fun findUserByPassword(userPassword:String) : User? {
+
+        return users.find { user -> user.password == userPassword }
+
+    }
+
     fun add(usuarioRegistrado: User) {
         users.add(usuarioRegistrado)
     }

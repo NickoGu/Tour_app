@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".data.RegisterActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/registrar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Button
+            android:id="@+id/boton_crear_cuenta"
+            android:layout_width="264dp"
+            android:layout_height="45dp"
+
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="82dp"
+            android:background="@drawable/bt_login"
+            android:text="@string/Boton_crear_usuario"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:strokeColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/contraseña_del_usuario"
+            android:layout_width="238dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="96dp"
+            android:ems="10"
+            android:hint="@string/Contrasenia"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombre_del_usuario" />
+
+        <EditText
+            android:id="@+id/apellido_del_usuario"
+            android:layout_width="238dp"
+            android:layout_height="49dp"
+            android:ems="10"
+            android:hint="@string/Apellido_del_usuario"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombre_del_usuario" />
+
+        <EditText
+            android:id="@+id/nickname_del_usuario"
+            android:layout_width="238dp"
+            android:layout_height="49dp"
+            android:ems="10"
+            android:hint="@string/Nickname"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/apellido_del_usuario" />
+
+        <EditText
+            android:id="@+id/nombre_del_usuario"
+            android:layout_width="238dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="124dp"
+            android:layout_marginBottom="430dp"
+            android:ems="10"
+            android:hint="@string/Nombre_del_usuario"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/apellido_del_usuario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="92dp"
+            android:layout_height="140dp"
+            app:layout_constraintBottom_toTopOf="@+id/boton_crear_cuenta"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contraseña_del_usuario"
+            app:layout_constraintVertical_bias="0.369"
+            app:srcCompat="@drawable/ic_logo_svg" />
+
+        <TextView
+            android:id="@+id/titulo_registro"
+            android:layout_width="354dp"
+            android:layout_height="91dp"
+            android:text="@string/titulo_register_activity"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/nombre_del_usuario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
