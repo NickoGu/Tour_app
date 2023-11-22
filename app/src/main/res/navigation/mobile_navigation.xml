@@ -9,17 +9,18 @@
         android:id="@+id/navigation_home"
         android:name="com.example.tour_app.ui.inicio.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_profile"
         android:name="com.example.tour_app.ui.paquetes.PerfilFragment"
         android:label="@string/title_perfil"
         tools:layout="@layout/fragment_packages" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.tour_app.ui.misCompras.misComprasFragment"
+        android:id="@+id/navigation_cart"
+        android:name="com.example.tour_app.ui.misCompras.MisComprasFragment"
         android:label="@string/title_myCart"
         tools:layout="@layout/fragment_mycart" />
 </navigation>

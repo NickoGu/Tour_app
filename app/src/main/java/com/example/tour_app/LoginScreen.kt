@@ -3,6 +3,7 @@ package  com.example.tour_app
 import User
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -38,7 +39,7 @@ class LoginScreen : AppCompatActivity() {
                     if(user!=null){
                         Toast.makeText(this,"¡Bienvenido, ${nickname}",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
-                        intent.putExtra("id", user.id)
+                        intent.putExtra(Constantes.USER_ID_INTENT, user.id)
                         startActivity(intent)
                         finish()
                     }
