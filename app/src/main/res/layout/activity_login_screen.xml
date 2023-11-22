@@ -73,9 +73,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bt_login"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/Ingresar_a_la_app"
-            android:textColor="#FFFFFF"
 
+            android:textColor="#FFFFFF"
             app:backgroundTint="@null"
             app:strokeColor="#FFFFFF" />
 
@@ -86,10 +87,12 @@
 
         <Button
             android:id="@+id/registrarse"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bt_login"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/Registrar_usuario"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#FFFFFF"
             app:backgroundTint="@null"
             app:strokeColor="#FFFFFF" />

@@ -7,11 +7,12 @@
     <string name="Nickname">Nickname</string>
     <string name="Contrasenia">Password</string>
     <string name="Ingresar_a_la_app">Ingresar</string>
-    <string name="Registrar_usuario">Registrarse</string>
+    <string name="Registrar_usuario">¿No tienes una cuenta? Registrate ahora</string>
     <string name="Icono_app">Icono de la app</string>
     <string name="Nombre_del_usuario">Nombre</string>
     <string name="Apellido_del_usuario">Apellido</string>
     <string name="email_del_usuario">Email</string>
     <string name="titulo_register_activity">Complete el formulario para registrarse</string>
     <string name="Boton_crear_usuario">Crear cuenta</string>
+    <string name="Navegar_al_login">¿Ya tienes una cuenta? Puedes iniciar sesion!</string>
 </resources>

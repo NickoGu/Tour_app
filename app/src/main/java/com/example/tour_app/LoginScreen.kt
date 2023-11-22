@@ -39,7 +39,7 @@ class LoginScreen : AppCompatActivity() {
 
                 try {
                     if(user!=null){
-                        Toast.makeText(this,"¡Bienvenido, ${nickname}",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"¡Bienvenido, ${nickname}!",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
                         intent.putExtra(Constantes.USER_ID_INTENT, user.id)
                         startActivity(intent)
