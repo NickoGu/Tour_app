@@ -22,7 +22,7 @@ object UserRepository {
         users.add(usuarioRegistrado)
     }
 
-    fun getUserById(id: Long): User {
+    fun getById(id: Long): User {
         return users.find { it.id == id }!! //Nunca puede ser nulo porque sino no hubiese podido iniciar sesion
     }
 

@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.tour_app.Constantes
+import androidx.navigation.fragment.navArgs
 import com.example.tour_app.databinding.FragmentPackagesBinding
 import repositories.UserRepository
 
 class PerfilFragment : Fragment() {
 
     private var _binding: FragmentPackagesBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -23,7 +20,10 @@ class PerfilFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val user = UserRepository.getUserById(requireArguments().getLong(Constantes.USER_ID_FRAGMENT_EXTRA))
+        val userIdArg by navArgs<PerfilFragmentArgs>()
+        println(userIdArg.userIdProfile)
+        val user = UserRepository.getById(userIdArg.userIdProfile)
+
         _binding = FragmentPackagesBinding.inflate(inflater, container, false)
         return binding.root
     }

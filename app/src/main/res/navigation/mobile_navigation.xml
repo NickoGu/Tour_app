@@ -16,11 +16,21 @@
         android:id="@+id/navigation_profile"
         android:name="com.example.tour_app.ui.paquetes.PerfilFragment"
         android:label="@string/title_perfil"
-        tools:layout="@layout/fragment_packages" />
+        tools:layout="@layout/fragment_packages" >
+        <argument
+            android:name="userIdProfile"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.example.tour_app.ui.misCompras.MisComprasFragment"
+        android:name="com.example.tour_app.ui.misCompras.UserPurchasesFragment"
         android:label="@string/title_myCart"
-        tools:layout="@layout/fragment_mycart" />
+        tools:layout="@layout/fragment_mycart" >
+        <argument
+            android:name="userIdPurchase"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
 </navigation>
