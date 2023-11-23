@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.example.tour_app.Constantes
 import com.example.tour_app.databinding.FragmentPackagesBinding
 import repositories.PackageRepository
 import repositories.UserRepository
@@ -24,7 +25,6 @@ class PerfilFragment : Fragment() {
     ): View {
 
         val userIdArg by navArgs<PerfilFragmentArgs>()
-        println(userIdArg.userIdProfile)
         val user = UserRepository.getById(userIdArg.userIdProfile)
         _binding = FragmentPackagesBinding.inflate(inflater, container, false)
         binding.tvFullName.text = "${user.name} ${user.surname} (${user.nickName})"
