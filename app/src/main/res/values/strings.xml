@@ -21,4 +21,5 @@
     <string name="tour_duration_detail_text">Duracion: %1$s dias</string>
     <string name="precio_package_detail">Precio: $%1$s</string>
     <string name="destination_name_detail">Destino: %1$s</string>
+    <string name="precio_final_text">Precio final: $%1$s</string>
 </resources>

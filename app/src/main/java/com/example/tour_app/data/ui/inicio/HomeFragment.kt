@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tour_app.Constantes
 import com.example.tour_app.data.ui.packagedetail.PackageDetail
 import com.example.tour_app.databinding.FragmentHomeBinding
+import com.example.tour_app.ui.misCompras.UserPurchasesFragmentArgs
 import com.example.tour_app.ui.misCompras.adapter.PackageItemModel
 import com.example.tour_app.ui.misCompras.adapter.PackagesAdapter
 import repositories.PackageRepository
@@ -37,6 +39,9 @@ class HomeFragment : Fragment() {
 
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+//        val args by navArgs<HomeFragmentArgs>()
+//        userId = args.userIdHome
+        userId = arguments?.getLong(Constantes.USER_ID_ARG_HOME)
         PackageRepository.get().forEach { packages ->
             val tempPackage = PackageRepository.getById(packages.id)
             tempPackage?.let { tourpackage ->
@@ -58,6 +63,7 @@ class HomeFragment : Fragment() {
         binding.rvPackages.adapter = PackagesAdapter(packages){ packageChoosenId ->
             val intent = Intent(requireActivity(), PackageDetail::class.java).apply {
                 putExtra(Constantes.PACKAGE_TO_BUY_ID, packageChoosenId)
+                putExtra(Constantes.USER_ID_DETAIL_EXTRA, userId)
             }
             startActivity(intent)
         }

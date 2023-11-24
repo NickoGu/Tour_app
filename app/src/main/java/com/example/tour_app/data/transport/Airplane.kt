@@ -4,6 +4,7 @@ import java.time.LocalTime
 
 class Airplane: Transport() {
 
+    //TODO Pasar a constants
     override fun calculateCommission(tourPackagePrice: Double): Double {
         val las3 = LocalTime.parse("14:59")
         val horaActual = LocalTime.now()
