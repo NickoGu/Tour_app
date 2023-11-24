@@ -4,7 +4,7 @@ import java.time.LocalTime
 
 class Airplane: Transport() {
 
-    override fun calculateCommision(tourPackagePrice: Double): Double {
+    override fun calculateCommission(tourPackagePrice: Double): Double {
         val las3 = LocalTime.parse("14:59")
         val horaActual = LocalTime.now()
         val las10yMedia = LocalTime.parse("22:31")
@@ -16,5 +16,9 @@ class Airplane: Transport() {
             print("Su monto se aplica un 3% de comision ")
             tourPackagePrice * 0.03
         }
+    }
+
+    override fun toString(): String {
+        return "Avion"
     }
 }
