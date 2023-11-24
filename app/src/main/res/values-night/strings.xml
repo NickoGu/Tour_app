@@ -5,5 +5,5 @@
     <string name="detail_package_rating">%1$s/5.0</string>
     <string name="transporte_package_detail">Transporte: %1$s</string>
     <string name="tour_duration_detail_text">Duracion: %1$s dias</string>
-    <string name="precio_package_detail">Precio:$%1$s</string>
+    <string name="precio_package_detail">Precio: $%1$s</string>
 </resources>

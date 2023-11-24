@@ -2,6 +2,7 @@ package com.example.tour_app.data.ui.packagedetail
 
 import User
 import android.graphics.Bitmap
+import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
@@ -66,10 +67,12 @@ class PackageDetail : AppCompatActivity() {
         binding.tvPackageDetailDuration.text =
             getString(R.string.tour_duration_detail_text, packageToBuy.duration.toString())
         binding.tvPackageDetailPrice.text =
-            getString(R.string.precio_package_detail, packageToBuy.price.toString())
+            "Precio: $${packageToBuy.price.toString()}"
+        binding.tvPackageDetailPrice.paintFlags = binding.tvPackageDetailPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         val finalPriceWithFee = getPriceWithFee(packageToBuy)
         binding.tvPackageDetailPriceWithFee.text =
-            getString(R.string.precio_final_text, finalPriceWithFee.toString())
+           "$${finalPriceWithFee.toString()}"
+        binding.warningFee.text = "(El precio puede verse afectado debido a las comisiones)"
         binding.tvPackageDetailDescription.text = packageToBuy.destination.description
         binding.tvPackageDetailDestiny.text =
             getString(R.string.destination_name_detail, packageToBuy.destination.name)
