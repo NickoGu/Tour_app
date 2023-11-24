@@ -79,8 +79,8 @@ class PackageDetail : AppCompatActivity() {
         binding.buttonBuyPackage.setOnClickListener {
             makePurchase(user, packageToBuy, finalPriceWithFee)
         }
-        downloadImages(packageToBuy.destination.pictures)
         setUpImageSlider()
+        downloadImages(packageToBuy.destination.pictures)
     }
 
     private fun setUpImageSlider() {
