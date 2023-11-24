@@ -88,7 +88,6 @@ class PackageDetail : AppCompatActivity() {
         binding.carrouselPackageDetailDestinationImages.setFactory {
             val imgView = ImageView(applicationContext)
             imgView.scaleType = ImageView.ScaleType.CENTER_CROP
-            //imgView.setPadding(8, 8, 8, 8)
             imgView
         }
         binding.carrouselPackageDetailDestinationImages.setInAnimation(
@@ -115,7 +114,7 @@ class PackageDetail : AppCompatActivity() {
         }
         binding.arrowPreviousImage.setOnClickListener {
             destinationImageListIndex =
-                if (destinationImageListIndex - 1 >= 0) destinationImageListIndex - 1 else 2
+                if (destinationImageListIndex - 1 >= 0) destinationImageListIndex - 1 else destinationImageList.size - 1
             if (destinationImageList.isNotEmpty()) {
                 binding.carrouselPackageDetailDestinationImages.setImageDrawable(
                     destinationImageList[destinationImageListIndex]
@@ -131,6 +130,7 @@ class PackageDetail : AppCompatActivity() {
                 override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                     bitmap?.let {
                         destinationImageList.add(it.toDrawable(resources))
+                        Log.d("TAG", destinationImageList.size.toString())
                         binding.carrouselPackageDetailDestinationImages.setImageDrawable(
                             destinationImageList[0]
                         )
@@ -146,6 +146,11 @@ class PackageDetail : AppCompatActivity() {
 
             })
         }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
 
     }
 
