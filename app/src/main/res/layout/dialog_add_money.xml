@@ -7,7 +7,7 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/editTextSaldo"
+        android:id="@+id/editTextUserMoney"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingrese el monto a cargar"
@@ -16,7 +16,7 @@
         android:singleLine="true" />
 
     <Button
-        android:id="@+id/buttonCargar"
+        android:id="@+id/buttonDepositMoney"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

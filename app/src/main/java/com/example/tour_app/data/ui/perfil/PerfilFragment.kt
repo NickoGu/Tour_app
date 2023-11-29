@@ -13,13 +13,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.tour_app.Constantes
 import com.example.tour_app.LoginScreen
 import com.example.tour_app.R
 import com.example.tour_app.R.*
-import com.example.tour_app.data.RegisterActivity
 import com.example.tour_app.databinding.FragmentPackagesBinding
-import repositories.PackageRepository
 import repositories.UserRepository
 
 class PerfilFragment : Fragment() {
@@ -47,7 +44,7 @@ class PerfilFragment : Fragment() {
 
         btCargarSaldo = binding.root.findViewById(R.id.bt_cargar_saldo)
         btCargarSaldo.setOnClickListener {
-            showCargarSaldoDialog(user)
+            showDepositMoneyDialog(user)
         }
 
 
@@ -55,23 +52,23 @@ class PerfilFragment : Fragment() {
 
 
     }
-    private fun showCargarSaldoDialog(user : User) {
+    private fun showDepositMoneyDialog(user : User) {
         val dialogBuilder = AlertDialog.Builder(requireContext())
         val inflater = this.layoutInflater
         val dialogView = inflater.inflate(layout.dialog_add_money, null)
         dialogBuilder.setView(dialogView)
 
-        val editTextSaldo = dialogView.findViewById<EditText>(R.id.editTextSaldo)
-        val buttonCargar = dialogView.findViewById<Button>(R.id.buttonCargar)
+        val editTextUserMoney = dialogView.findViewById<EditText>(R.id.editTextUserMoney)
+        val buttonDepositMoney = dialogView.findViewById<Button>(R.id.buttonDepositMoney)
 
         val alertDialog = dialogBuilder.create()
 
-        buttonCargar.setOnClickListener {
+        buttonDepositMoney.setOnClickListener {
 
-            val saldo = editTextSaldo.text.toString().toIntOrNull()
-            if (saldo != null) {
+            val money = editTextUserMoney.text.toString().toIntOrNull()
+            if (money != null) {
                 try {
-                    UserRepository.addMoney(user.nickName, saldo)
+                    UserRepository.addMoney(user.nickName, money)
                     binding.tvMoney.text = "$" + user.money.toString()
                     alertDialog.dismiss()
                 } catch (e: NoSuchElementException) {
