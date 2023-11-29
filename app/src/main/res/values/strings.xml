@@ -14,7 +14,7 @@
     <string name="email_del_usuario">Email</string>
     <string name="titulo_register_activity">Complete el formulario para registrarse</string>
     <string name="Boton_crear_usuario">Crear cuenta</string>
-    <string name="Navegar_al_login">¿Ya tienes una cuenta? Puedes iniciar sesion!</string>
+    <string name="Navegar_al_login">¿Ya tienes una cuenta? ¡Puedes iniciar sesion!</string>
     <string name="buy_package_btn_text">Comprar</string>
     <string name="detail_package_rating">%1$s/5.0</string>
     <string name="transporte_package_detail">Transporte: %1$s</string>

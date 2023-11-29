@@ -44,18 +44,20 @@
             android:ems="10"
             android:textColor="@color/white"
             android:hint="@string/Nickname"
+            android:fontFamily="@font/font_app"
             android:inputType="text"
             android:textColorHint="@color/white" />
 
         <EditText
             android:id="@+id/contraseña"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="48dp"
             android:ems="10"
             android:textColor="@color/white"
             android:backgroundTint="@color/white"
             android:hint="@string/Contrasenia"
             android:inputType="textPassword"
+            android:fontFamily="@font/font_app"
             android:textColorHint="@color/white" />
 
     </LinearLayout>
@@ -75,9 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bt_login"
-            android:fontFamily="sans-serif-medium"
             android:text="@string/Ingresar_a_la_app"
-
+            android:fontFamily="@font/font_app"
             android:textColor="#FFFFFF"
             app:backgroundTint="@null"
             app:strokeColor="#FFFFFF" />
@@ -87,17 +88,20 @@
             android:layout_height="24dp"
             />
 
-        <Button
-            android:id="@+id/registrarse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bt_login"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/Registrar_usuario"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        <TextView
+            android:id="@+id/tv_register_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:text="¿No tienes una cuenta? ¡Registrate ahora!"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#FFFFFF"
-            app:backgroundTint="@null"
-            app:strokeColor="#FFFFFF" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/boton_crear_cuenta"
+            app:layout_constraintVertical_bias="0.918" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

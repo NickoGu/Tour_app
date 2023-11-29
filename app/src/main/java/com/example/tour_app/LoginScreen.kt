@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -73,7 +74,7 @@ class LoginScreen : AppCompatActivity() {
 
 
         }
-        val btn_registrarse = findViewById<Button>(R.id.registrarse)
+        val btn_registrarse = findViewById<TextView>(R.id.tv_register_navigation)
         btn_registrarse.setOnClickListener {
 
             val registerActivityIntent = Intent(this, RegisterActivity::class.java)
