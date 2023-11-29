@@ -22,4 +22,7 @@
     <string name="precio_package_detail">Precio: $%1$s</string>
     <string name="destination_name_detail">Destino: %1$s</string>
     <string name="precio_final_text">Precio final: $%1$s</string>
+    <string name="el_precio_puede_verse_afectado_debido_a_las_comisiones">(El precio puede verse afectado debido a las comisiones)</string>
+    <string name="final_price_with_fee">$%1$s</string>
+    <string name="precio">Precio: $%1$s</string>
 </resources>

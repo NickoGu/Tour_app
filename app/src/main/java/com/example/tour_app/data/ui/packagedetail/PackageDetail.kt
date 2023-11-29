@@ -8,8 +8,11 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.lifecycleScope
 import com.example.tour_app.Constantes
@@ -64,15 +67,23 @@ class PackageDetail : AppCompatActivity() {
             getString(R.string.detail_package_rating, packageToBuy.stars.toString())
         binding.tvPackageDetailTransport.text =
             getString(R.string.transporte_package_detail, packageToBuy.transport)
+        when(packageToBuy.transport.toString()){
+            "Airplane" -> binding.ivTransportImage.setImageResource(R.drawable.ic_baseline_airplanemode_active_24)
+            "Ferry" -> binding.ivTransportImage.setImageResource(R.drawable.ic_ferry)
+            "Bus" -> binding.ivTransportImage.setImageResource(R.drawable.ic_bus)
+            "Train" -> binding.ivTransportImage.setImageResource(R.drawable.ic_train)
+        }
         binding.tvPackageDetailDuration.text =
             getString(R.string.tour_duration_detail_text, packageToBuy.duration.toString())
         binding.tvPackageDetailPrice.text =
-            "Precio: $${packageToBuy.price.toString()}"
-        binding.tvPackageDetailPrice.paintFlags = binding.tvPackageDetailPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            getString(R.string.precio, packageToBuy.price.toString())
+        binding.tvPackageDetailPrice.paintFlags =
+            binding.tvPackageDetailPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         val finalPriceWithFee = getPriceWithFee(packageToBuy)
         binding.tvPackageDetailPriceWithFee.text =
-           "$${finalPriceWithFee.toString()}"
-        binding.warningFee.text = "(El precio puede verse afectado debido a las comisiones)"
+            getString(R.string.final_price_with_fee, finalPriceWithFee.toString())
+        binding.warningFee.text =
+            getString(R.string.el_precio_puede_verse_afectado_debido_a_las_comisiones)
         binding.tvPackageDetailDescription.text = packageToBuy.destination.description
         binding.tvPackageDetailDestiny.text =
             getString(R.string.destination_name_detail, packageToBuy.destination.name)
@@ -87,7 +98,12 @@ class PackageDetail : AppCompatActivity() {
         println(destinationImageList.size)
         binding.carrouselPackageDetailDestinationImages.setFactory {
             val imgView = ImageView(applicationContext)
-            imgView.scaleType = ImageView.ScaleType.CENTER_CROP
+            imgView.scaleType = ImageView.ScaleType.FIT_CENTER
+            val layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+            )
+            imgView.layoutParams = layoutParams
             imgView
         }
         binding.carrouselPackageDetailDestinationImages.setInAnimation(
@@ -125,6 +141,7 @@ class PackageDetail : AppCompatActivity() {
     }
 
     private fun downloadImages(imagesUrl: List<String>) {
+
         imagesUrl.forEach { url ->
             Picasso.get().load(url).into(object : Target {
                 override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
@@ -138,6 +155,10 @@ class PackageDetail : AppCompatActivity() {
                 }
 
                 override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+                    ResourcesCompat.getDrawable(resources,R.drawable.error_placeholder,null)?.let { destinationImageList.add(it) }
+                    binding.carrouselPackageDetailDestinationImages.setImageResource(
+                        R.drawable.error_placeholder
+                    )
 
                 }
 
