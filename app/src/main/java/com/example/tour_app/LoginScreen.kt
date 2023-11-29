@@ -44,7 +44,11 @@ class LoginScreen : AppCompatActivity() {
                     intent.putExtra(Constantes.USER_ID_INTENT, user.id)
                     startActivity(intent)
                     finish()
-                } else {
+                } else if(binding.nickname.text.isEmpty() || binding.contraseA.text.isEmpty()  ) {
+                    Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                else {
                     Toast.makeText(this, "Usuario o contraseña incorrectos.", Toast.LENGTH_SHORT)
                         .show()
 
