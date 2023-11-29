@@ -1,6 +1,7 @@
 package com.example.tour_app.ui.misCompras.adapter
 
 import android.view.*
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tour_app.data.tour.TourPackage
 import com.example.tour_app.data.user.Purchase

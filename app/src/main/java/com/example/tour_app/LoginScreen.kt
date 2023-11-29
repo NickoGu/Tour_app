@@ -3,15 +3,11 @@ package  com.example.tour_app
 import User
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.tour_app.data.RegisterActivity
 import com.example.tour_app.data.excepciones.ErrorIniciarSesionException
 import com.example.tour_app.databinding.ActivityLoginScreenBinding
-import com.example.tour_app.ui.paquetes.PerfilFragment
 import repositories.UserRepository
 
 

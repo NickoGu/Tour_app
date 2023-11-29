@@ -15,4 +15,5 @@
     <string name="titulo_register_activity">Complete el formulario para registrarse</string>
     <string name="Boton_crear_usuario">Crear cuenta</string>
     <string name="Navegar_al_login">¿Ya tienes una cuenta? Puedes iniciar sesion!</string>
+    <string name="Boton_comprar">Comprar</string>
 </resources>

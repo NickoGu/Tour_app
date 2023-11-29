@@ -26,7 +26,7 @@
             <ImageView
                 android:id="@+id/iv_package_tour_image"
                 android:layout_width="match_parent"
-                android:layout_height="194dp"
+                android:layout_height="182dp"
                 android:contentDescription="@string/image_of_the_tour_content_desc"
                 android:scaleType="centerCrop" />
 
@@ -63,7 +63,7 @@
                     android:id="@+id/button_buy_package"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Comprar" />
+                    android:text="@string/Boton_comprar" />
 
 
             </LinearLayout>

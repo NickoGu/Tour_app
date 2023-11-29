@@ -1,4 +1,4 @@
-package com.example.tour_app.data
+package com.example.tour_app
 
 import User
 import android.content.Intent
@@ -10,40 +10,35 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.tour_app.LoginScreen
-import com.example.tour_app.R
-import org.w3c.dom.Text
+import com.example.tour_app.databinding.ActivityRegisterBinding
 import repositories.UserRepository
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 class RegisterActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
+
+    private lateinit var bindingRegister : ActivityRegisterBinding
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        bindingRegister = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(bindingRegister.root)
 
-        val tv_titulo_menu_registro = findViewById<TextView>(R.id.titulo_registro)
-        val et_nombre_de_usuario = findViewById<EditText>(R.id.nombre_del_usuario)
-        val et_apellido_del_usuario = findViewById<EditText>(R.id.apellido_del_usuario)
-        val et_nickname_del_usuario = findViewById<EditText>(R.id.nickname_del_usuario)
-        val et_password_del_usuario = findViewById<EditText>(R.id.contraseña_del_usuario)
-        val btn_crear_usuario = findViewById<Button>(R.id.boton_crear_cuenta)
-        val tv_navegar_a_loginActivity = findViewById<TextView>(R.id.login_navigation_tv)
 
-        tv_navegar_a_loginActivity.setOnClickListener {
+        bindingRegister.loginNavigationTv.setOnClickListener {
 
             val navigateLoginIntent = Intent(this, LoginScreen::class.java)
             startActivity(navigateLoginIntent)
 
         }
 
-        btn_crear_usuario.setOnClickListener {
+        bindingRegister.botonCrearCuenta.setOnClickListener {
 
-            val nombreUsuario = et_nombre_de_usuario.text.toString()
-            val apellidoUsuario = et_apellido_del_usuario.text.toString()
-            val nicknameUsuario = et_nickname_del_usuario.text.toString()
-            val passwordUsuario = et_password_del_usuario.text.toString()
+            val nombreUsuario = bindingRegister.nombreDelUsuario.text.toString()
+            val apellidoUsuario = bindingRegister.apellidoDelUsuario.text.toString()
+            val nicknameUsuario = bindingRegister.nicknameDelUsuario.text.toString()
+            val passwordUsuario = bindingRegister.passwordDelUsuario.text.toString()
 
             if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || nicknameUsuario.isEmpty() || passwordUsuario.isEmpty()){
                 Toast.makeText(this, "Aun quedan campos por completar", Toast.LENGTH_SHORT).show()

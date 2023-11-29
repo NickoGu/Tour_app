@@ -1,12 +1,15 @@
 package com.example.tour_app.ui.inicio
 
 import User
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
@@ -24,6 +27,7 @@ import com.example.tour_app.ui.misCompras.adapter.PackageItemModel
 import com.example.tour_app.ui.misCompras.adapter.PackagesAdapter
 import repositories.PackageRepository
 import repositories.UserRepository
+import java.util.prefs.Preferences
 import kotlin.properties.Delegates
 
 class HomeFragment : Fragment() {
@@ -43,14 +47,14 @@ class HomeFragment : Fragment() {
 
     }
 
+    val btn_comprar = binding.root.findViewById<Button>(R.id.button_buy_package)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
 
-
         ): View {
-
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         PackageRepository.get().forEach { packages ->
@@ -62,9 +66,11 @@ class HomeFragment : Fragment() {
                     packages.price,
                     tourpackage.logo
                 )
+
                 paquetes.add(packageItem)
             }
         }
+
         return binding.root
     }
 
