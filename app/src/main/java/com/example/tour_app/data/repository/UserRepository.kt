@@ -38,5 +38,15 @@ object UserRepository {
         return users.find { it.id == id }!! //Nunca puede ser nulo porque sino no hubiese podido iniciar sesion
     }
 
+    fun addMoney(userNickName: String, monto: Int) {
+        val user = findUserByNickname(userNickName)
+
+        if (user != null) {
+            user.money += monto
+        } else {
+            throw Exception("No se encontró un usuario con el nombre de usuario: $userNickName")
+        }
+    }
+
 }
 
