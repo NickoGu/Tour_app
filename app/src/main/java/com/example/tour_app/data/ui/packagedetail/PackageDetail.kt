@@ -1,6 +1,7 @@
 package com.example.tour_app.data.ui.packagedetail
 
 import User
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Paint
 import android.graphics.drawable.Drawable
@@ -17,6 +18,7 @@ import com.example.tour_app.R
 import com.example.tour_app.data.tour.TourPackage
 import com.example.tour_app.data.user.Purchase
 import com.example.tour_app.databinding.ActivityPackageDetailBinding
+import com.example.tour_app.ui.inicio.HomeFragment
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import repositories.PackageRepository
@@ -188,6 +190,8 @@ class PackageDetail : AppCompatActivity() {
             user.discountMoney(user.money, finalPrice)
             Toast.makeText(this@PackageDetail, "Compra realizada", Toast.LENGTH_SHORT)
                 .show()
+            val intent = Intent (this, HomeFragment::class.java)
+            navigateUpTo(intent)
         } else {
             Toast.makeText(
                 this@PackageDetail,
