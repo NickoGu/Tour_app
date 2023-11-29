@@ -3,7 +3,6 @@ package com.example.tour_app.data.ui.packagedetail
 import User
 import android.graphics.Bitmap
 import android.graphics.Paint
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,10 +10,8 @@ import android.util.Log
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toDrawable
-import androidx.lifecycle.lifecycleScope
 import com.example.tour_app.Constantes
 import com.example.tour_app.R
 import com.example.tour_app.data.tour.TourPackage
@@ -22,16 +19,6 @@ import com.example.tour_app.data.user.Purchase
 import com.example.tour_app.databinding.ActivityPackageDetailBinding
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.joinAll
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
-import kotlinx.coroutines.withContext
 import repositories.PackageRepository
 import repositories.PurchaseRepository
 import repositories.UserRepository
@@ -66,7 +53,7 @@ class PackageDetail : AppCompatActivity() {
         binding.tvPackageDetailRating.text =
             getString(R.string.detail_package_rating, packageToBuy.stars.toString())
         binding.tvPackageDetailTransport.text =
-            getString(R.string.transporte_package_detail, packageToBuy.transport)
+            getString(R.string.transport_package_detail, packageToBuy.transport)
         when(packageToBuy.transport.toString()){
             "Airplane" -> binding.ivTransportImage.setImageResource(R.drawable.ic_baseline_airplanemode_active_24)
             "Ferry" -> binding.ivTransportImage.setImageResource(R.drawable.ic_ferry)
@@ -76,14 +63,14 @@ class PackageDetail : AppCompatActivity() {
         binding.tvPackageDetailDuration.text =
             getString(R.string.tour_duration_detail_text, packageToBuy.duration.toString())
         binding.tvPackageDetailPrice.text =
-            getString(R.string.precio, packageToBuy.price.toString())
+            getString(R.string.price, packageToBuy.price.toString())
         binding.tvPackageDetailPrice.paintFlags =
             binding.tvPackageDetailPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         val finalPriceWithFee = getPriceWithFee(packageToBuy)
         binding.tvPackageDetailPriceWithFee.text =
             getString(R.string.final_price_with_fee, finalPriceWithFee.toString())
         binding.warningFee.text =
-            getString(R.string.el_precio_puede_verse_afectado_debido_a_las_comisiones)
+            getString(R.string.price_may_be_affected_due_to_commissions)
         binding.tvPackageDetailDescription.text = packageToBuy.destination.description
         binding.tvPackageDetailDestiny.text =
             getString(R.string.destination_name_detail, packageToBuy.destination.name)
@@ -198,7 +185,7 @@ class PackageDetail : AppCompatActivity() {
                     LocalDate.now().toString()
                 )
             )
-            user.descontar(user.money, finalPrice)
+            user.discountMoney(user.money, finalPrice)
             Toast.makeText(this@PackageDetail, "Compra realizada", Toast.LENGTH_SHORT)
                 .show()
         } else {

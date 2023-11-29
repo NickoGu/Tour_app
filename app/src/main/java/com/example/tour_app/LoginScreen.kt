@@ -3,16 +3,11 @@ package  com.example.tour_app
 import User
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.tour_app.data.RegisterActivity
 import com.example.tour_app.data.excepciones.ErrorIniciarSesionException
 import com.example.tour_app.databinding.ActivityLoginScreenBinding
-import com.example.tour_app.ui.paquetes.PerfilFragment
 import repositories.UserRepository
 
 
@@ -28,13 +23,13 @@ class LoginScreen : AppCompatActivity() {
 
 
         binding.ingresar.setOnClickListener {
-            val contrasenia = binding.contraseA.text.toString()
+            val password = binding.contraseA.text.toString()
             val nickname = binding.nickname.text.toString()
             var user: User? = null
 
             var error = 0
 
-            user = UserRepository.login(nickname, contrasenia)
+            user = UserRepository.login(nickname, password)
 
 
 
@@ -74,8 +69,7 @@ class LoginScreen : AppCompatActivity() {
 
 
         }
-        val btn_registrarse = findViewById<TextView>(R.id.tv_register_navigation)
-        btn_registrarse.setOnClickListener {
+        binding.tvRegisterNavigation.setOnClickListener {
 
             val registerActivityIntent = Intent(this, RegisterActivity::class.java)
             startActivity(registerActivityIntent)

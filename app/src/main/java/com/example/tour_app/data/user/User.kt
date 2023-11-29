@@ -13,7 +13,8 @@ class User (
         private var userCount:Long = 0
     }
 
-    fun descontar(userMoney: Int, finalPrice: Double) {
+    fun discountMoney(userMoney: Int, finalPrice: Double) {
         money = userMoney.minus(finalPrice).toInt()
     }
+
 }

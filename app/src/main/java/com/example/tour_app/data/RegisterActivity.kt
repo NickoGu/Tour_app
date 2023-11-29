@@ -12,9 +12,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.tour_app.LoginScreen
 import com.example.tour_app.R
-import org.w3c.dom.Text
 import repositories.UserRepository
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 class RegisterActivity : AppCompatActivity() {
@@ -23,38 +21,38 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val tv_titulo_menu_registro = findViewById<TextView>(R.id.titulo_registro)
-        val et_nombre_de_usuario = findViewById<EditText>(R.id.nombre_del_usuario)
-        val et_apellido_del_usuario = findViewById<EditText>(R.id.apellido_del_usuario)
-        val et_nickname_del_usuario = findViewById<EditText>(R.id.nickname_del_usuario)
-        val et_password_del_usuario = findViewById<EditText>(R.id.contraseña_del_usuario)
-        val btn_crear_usuario = findViewById<Button>(R.id.boton_crear_cuenta)
-        val tv_navegar_a_loginActivity = findViewById<TextView>(R.id.login_navigation_tv)
+        val tv_title = findViewById<TextView>(R.id.titulo_registro)
+        val et_name = findViewById<EditText>(R.id.nombre_del_usuario)
+        val et_surname = findViewById<EditText>(R.id.apellido_del_usuario)
+        val et_nickname = findViewById<EditText>(R.id.nickname_del_usuario)
+        val et_password = findViewById<EditText>(R.id.contraseña_del_usuario)
+        val btn_create_user = findViewById<Button>(R.id.boton_crear_cuenta)
+        val tv_loginActivity_nav = findViewById<TextView>(R.id.login_navigation_tv)
 
-        tv_navegar_a_loginActivity.setOnClickListener {
+        tv_loginActivity_nav.setOnClickListener {
 
             val navigateLoginIntent = Intent(this, LoginScreen::class.java)
             startActivity(navigateLoginIntent)
 
         }
 
-        btn_crear_usuario.setOnClickListener {
+        btn_create_user.setOnClickListener {
 
-            val nombreUsuario = et_nombre_de_usuario.text.toString()
-            val apellidoUsuario = et_apellido_del_usuario.text.toString()
-            val nicknameUsuario = et_nickname_del_usuario.text.toString()
-            val passwordUsuario = et_password_del_usuario.text.toString()
+            val name = et_name.text.toString()
+            val surname = et_surname.text.toString()
+            val nickname = et_nickname.text.toString()
+            val password = et_password.text.toString()
 
-            if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || nicknameUsuario.isEmpty() || passwordUsuario.isEmpty()){
+            if (name.isEmpty() || surname.isEmpty() || nickname.isEmpty() || password.isEmpty()){
                 Toast.makeText(this, "Aun quedan campos por completar", Toast.LENGTH_SHORT).show()
             }   else {
 
-                val validarUsuario = UserRepository.findUserByNickname(nicknameUsuario)
-                if (validarUsuario != null) {
+                val validateUser = UserRepository.findUserByNickname(nickname)
+                if (validateUser != null) {
                     Toast.makeText(this, "El nombre de usuario se encuentra en uso", Toast.LENGTH_SHORT).show()
                 } else {
-                    val usuarioNuevo = User(LocalDateTime.now().toString(), nicknameUsuario, passwordUsuario, nombreUsuario, apellidoUsuario)
-                    UserRepository.add(usuarioNuevo)
+                    val newUser = User(LocalDateTime.now().toString(), nickname, password, name, surname)
+                    UserRepository.add(newUser)
                     Toast.makeText(this, "El usuario fue registrado!", Toast.LENGTH_SHORT).show()
                     val navigateLoginIntent = Intent(this, LoginScreen::class.java)
                     startActivity(navigateLoginIntent)
