@@ -16,4 +16,14 @@
     <string name="Boton_crear_usuario">Crear cuenta</string>
     <string name="Navegar_al_login">¿Ya tienes una cuenta? Puedes iniciar sesion!</string>
     <string name="Boton_comprar">Comprar</string>
+    <string name="buy_package_btn_text">Comprar</string>
+    <string name="detail_package_rating">%1$s/5.0</string>
+    <string name="transporte_package_detail">Transporte: %1$s</string>
+    <string name="tour_duration_detail_text">Duracion: %1$s dias</string>
+    <string name="precio_package_detail">Precio: $%1$s</string>
+    <string name="destination_name_detail">Destino: %1$s</string>
+    <string name="precio_final_text">Precio final: $%1$s</string>
+    <string name="el_precio_puede_verse_afectado_debido_a_las_comisiones">(El precio puede verse afectado debido a las comisiones)</string>
+    <string name="final_price_with_fee">$%1$s</string>
+    <string name="precio">Precio: $%1$s</string>
 </resources>

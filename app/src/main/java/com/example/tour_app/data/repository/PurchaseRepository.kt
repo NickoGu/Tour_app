@@ -7,10 +7,10 @@ object PurchaseRepository {
     private val purchases = mutableListOf<Purchase>()
 
     init {
-        purchases.add(Purchase(1L, 4, 1L, 350.50, "2023/01/01"))
-        purchases.add(Purchase(2L, 4, 4L, 100.75, "2023/01/01"))
-        purchases.add(Purchase(3L, 4, 7L, 250.50, "2023/01/01"))
-        purchases.add(Purchase(4L, 0, 10L, 50.00, "2023/01/01"))
+        purchases.add(Purchase(1L, 4, 1L, 350.50, "2023-01-01"))
+        purchases.add(Purchase(2L, 4, 4L, 100.75, "2023-03-24"))
+        purchases.add(Purchase(3L, 4, 7L, 250.50, "2023-04-28"))
+        purchases.add(Purchase(4L, 0, 10L, 50.00, "2023-06-26"))
     }
 
     fun add(purchase: Purchase) {
@@ -19,6 +19,10 @@ object PurchaseRepository {
 
     fun get() : List<Purchase> {
         return purchases
+    }
+
+    fun getPurchasesByUserId(userId: Long): List<Purchase>{
+        return purchases.filter { it.userId == userId }
     }
     
 }

@@ -3,6 +3,7 @@ package com.example.tour_app
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.navigation.NavArgument
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        navController.setGraph(
+            R.navigation.mobile_navigation,
+            bundleOf(Constantes.USER_ID_ARG_HOME to userId)
+        )
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_cart, R.id.navigation_profile
@@ -32,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         val userIdNavArg = NavArgument.Builder().setDefaultValue(userId).build()
+        navController.findDestination(R.id.navigation_home)?.apply {
+            addArgument(this.arguments.keys.first(), userIdNavArg)
+        }
         navController.findDestination(R.id.navigation_cart)?.apply {
             addArgument(this.arguments.keys.first(), userIdNavArg)
         }

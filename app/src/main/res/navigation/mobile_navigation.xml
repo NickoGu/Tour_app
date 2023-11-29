@@ -10,6 +10,10 @@
         android:name="com.example.tour_app.ui.inicio.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
+        <argument
+            android:name="userIdHome"
+            app:argType="long"
+            android:defaultValue="-1L" />
     </fragment>
 
     <fragment

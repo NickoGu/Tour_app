@@ -3,14 +3,12 @@ package com.example.tour_app.ui.misCompras.adapter
 import android.view.*
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tour_app.data.tour.TourPackage
-import com.example.tour_app.data.user.Purchase
 import com.example.tour_app.databinding.PackagesListItemBinding
-import com.example.tour_app.databinding.PurchaseListItemBinding
 import com.squareup.picasso.Picasso
 
 class PackagesAdapter(
-    private val packages: List<PackageItemModel>
+    private val packages: List<PackageItemModel>,
+    private val onBuyClicked: (Long) -> Unit
 ) :
     RecyclerView.Adapter<PackageViewHolder>() {
 
@@ -21,7 +19,7 @@ class PackagesAdapter(
     }
 
     override fun onBindViewHolder(holder: PackageViewHolder, position: Int) {
-        holder.bind(packages[position])
+        holder.bind(packages[position], onBuyClicked)
     }
 
     override fun getItemCount(): Int {
@@ -30,13 +28,17 @@ class PackagesAdapter(
 
 }
 
-class PackageViewHolder(private val binding: PackagesListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class PackageViewHolder(private val binding: PackagesListItemBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(packages: PackageItemModel) {
+    fun bind(packages: PackageItemModel, onBuyClicked: (Long) -> Unit) {
         Picasso.get().load(packages.image).into(binding.ivPackageTourImage)
         binding.tvPackageTourTitle.text = packages.title
-        binding.tvPackageTourDate.text = "Duración del viaje: ${packages.duration.toString()} días"
+        binding.tvPackageTourDate.text = "Duración del viaje: ${packages.duration} días"
         binding.tvPackageTourPrice.text = "$${packages.price}"
+        binding.buttonBuyPackage.setOnClickListener{
+            onBuyClicked(packages.id)
+        }
     }
 
 

@@ -6,6 +6,8 @@ import com.example.tour_app.data.tour.TourPackage
 import com.example.tour_app.data.user.Purchase
 import com.example.tour_app.databinding.PurchaseListItemBinding
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class PurchasesAdapter(
     private val myPurchases: List<PurchaseItemModel>
@@ -33,7 +35,11 @@ class PurchasesVieHolder(private val binding: PurchaseListItemBinding) : Recycle
     fun bind(purchase: PurchaseItemModel) {
         Picasso.get().load(purchase.image).into(binding.ivPurchaseTourImage)
         binding.tvPurchaseTourTitle.text = purchase.title
-        binding.tvPurchaseTourDate.text = purchase.date
+        val parser = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formatter = SimpleDateFormat("dd-MM-yy", Locale.getDefault())
+        val date = parser.parse(purchase.date)!!
+        val formattedDate = formatter.format(date)
+        binding.tvPurchaseTourDate.text = formattedDate
         binding.tvPurchaseTourPrice.text = "$${purchase.price}"
     }
 }

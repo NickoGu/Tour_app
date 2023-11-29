@@ -30,29 +30,25 @@ class UserPurchasesFragment : Fragment() {
         val args by navArgs<UserPurchasesFragmentArgs>()
         val userId = args.userIdPurchase
         _binding = FragmentMycartBinding.inflate(inflater, container, false)
-        getPurchasesForUser(userId)
+        fillUserPurchasesList(PurchaseRepository.getPurchasesByUserId(userId))
         return binding.root
     }
 
-    private fun getPurchasesForUser(userId: Long) {
-        PurchaseRepository.get().forEach { purchase ->
-            if (purchase.userId == userId) {
-                fillPurchasesList(purchase)
+    private fun fillUserPurchasesList(purchasesList: List<Purchase>){
+        purchasesList.forEach {purchase ->
+            val tourPackage = PackageRepository.getById(purchase.packageId)
+            tourPackage?.let {
+                val purchaseItem = PurchaseItemModel(
+                    tourPackage.name,
+                    purchase.createdDate,
+                    purchase.amount,
+                    tourPackage.logo
+                )
+                purchases.add(purchaseItem)
             }
         }
-    }
 
-    private fun fillPurchasesList(purchase: Purchase){
-        val tourPackage = PackageRepository.getById(purchase.packageId)
-        tourPackage?.let {
-            val purchaseItem = PurchaseItemModel(
-                tourPackage.name,
-                purchase.createdDate,
-                purchase.amount,
-                tourPackage.logo
-            )
-            purchases.add(purchaseItem)
-        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
