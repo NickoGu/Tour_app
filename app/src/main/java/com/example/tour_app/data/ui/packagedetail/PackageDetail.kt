@@ -192,6 +192,8 @@ class PackageDetail : AppCompatActivity() {
                 .show()
             val intent = Intent (this, HomeFragment::class.java)
             navigateUpTo(intent)
+            finish()
+
         } else {
             Toast.makeText(
                 this@PackageDetail,
